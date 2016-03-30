@@ -1,4 +1,4 @@
-# python3
+# class definition
 
 class Object:
 
@@ -27,6 +27,7 @@ class Object:
 		self.__average = self.__average / len(self.data)
 		return {'max':self.__maximum, 'min':self.__minimum, 'avg':self.__average}
 
+# main 
 
 arr = Object()
 
@@ -36,7 +37,6 @@ while True:
 	if numb.isalpha() or not len(numb): continue
 	arr.add(float(numb))
 
-arr.getMaxMinAvg()
 print()
 print('You have inputed:',arr.getData())
 result = arr.getMaxMinAvg()
