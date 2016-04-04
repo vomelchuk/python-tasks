@@ -1,46 +1,21 @@
-# class definition
+# This module using Python 3 intepreter
 
-class Object:
+from get_max_min_avg import getMaxMinAvg
 
-	__maximum = None
-	__minimum = None
-	__average = None
+arr = [] # create empty list
 
-	def __init__(self):
-		self.data = []
-		
-	def add(self, x):
-		self.data.append(x)
-
-	def getData(self):
-		return self.data
-	
-	def getMaxMinAvg(self):
-		if not len(self.data):return {'Empty list':'no data'}
-		self.__minimum = self.data[0]
-		self.__maximum = self.data[0]
-		self.__average = 0
-		for item in self.data:
-			self.__average += item
-			if item < self.__minimum: self.__minimum = item
-			if item > self.__maximum: self.__maximum = item
-		self.__average = self.__average / len(self.data)
-		return {'max':self.__maximum, 'min':self.__minimum, 'avg':self.__average}
-
-# main 
-
-arr = Object()
-
+# this section fills list
 while True:
 	numb = input('Input number (to break type \'exit\'): ')
-	if numb == 'exit': break
-	if numb.isalpha() or not len(numb): continue
-	arr.add(float(numb))
+	if numb == 'exit': break # end of filling list
+	if numb.isalpha() or not len(numb): continue # ignoring non-numerical data
+	arr.append(float(numb))
 
-print()
-print('You have inputed:',arr.getData())
-result = arr.getMaxMinAvg()
+print () # separator between incoming datas and result
+print ('You have inputed:',arr)
+result = getMaxMinAvg(arr)
 for item in result.keys():
 	print(item,'=',result[item])
+
 
 		
