@@ -20,6 +20,7 @@ class Task2TestCase(unittest.TestCase):
 	def test_function_reverse_string(self):
 		self.assertEqual(reverseString("Home"), "emoH", msg="Error")
 		self.assertEqual(reverseString("0123456789"), "9876543210", msg="Error")
+		self.assertEqual(reverseString("My name`s Vitaliy"), "yilatiV s`eman yM", msg="Error")
 
 if __name__ == '__main__':
 	unittest.main()

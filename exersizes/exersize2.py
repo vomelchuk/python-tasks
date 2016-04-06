@@ -1,4 +1,4 @@
-def getMaxMinAvg(data):
+def getMaxMinAvg(numbers):
 	"""
 	This function calculates minimum, maximum and average
 	values of the passing list in this function and returns 
@@ -6,31 +6,33 @@ def getMaxMinAvg(data):
 	If passing list is empty each value of the element of 
 	the dictionary would receive the value `None`.
 	"""
-
-	maximum = minimum = average = None
-
-	if not len(data): # if list is empty function returns results data with value `None` 
-		return {'max':maximum, 'min':minimum, 'avg':average}
-	# initialization `minimum` and `maximum` with the first value of the list
-	maximum = minimum = data[0]
-	average = 0 # initialization starts value of the `average`
+	if not len(numbers): # if list is empty function returns results values `None` 
+		return {'max':None, 'min':None, 'avg':None}
+	# initialization `min` and `max` with the first value of the numbers and `avg` with 0
+	result = {'max':numbers[0], 'min':numbers[0], 'avg':0}
 	# calculate result if list is not empty
-	for item in data:
-		average += item
-		if item < minimum: minimum = item
-		if item > maximum: maximum = item
-	average = average / len(data)
+	for item in numbers:
+		result['avg'] += item
+		if item < result['min']: result['min'] = item
+		if item > result['max']: result['max'] = item
+	result['avg'] = result['avg'] / len(numbers)
+	return result
 
-	return {'max':maximum, 'min':minimum, 'avg':average}
-
-def isPalindrom(data):
+def isPalindrom(phrase):
 	"""This function returns `true` if passing string is palindrom, 
 	otherwise returns `false`"""
 	excep = (' ', ',', '.', '!', '?', ':', ';') # exceptions signs
-	for symb in excep: # this cycle excepts some signs 
-		data = data.replace(symb,'')
-	return data.lower() == data[::-1].lower()
+	# this cycle excepts some useless signs from phrase
+	for symb in excep: 
+		phrase = phrase.replace(symb,'')
+	# next cycle of code returns `false` if phrase isn`t palindrom
+	for item in range(int(len(phrase) / 2) - 1):
+		if phrase[item].lower() != phrase[len(phrase) - 1 - item].lower(): return False
+	return True
 
-def reverseString(data):
+def reverseString(phrase):
 	"""This function reverses passing string"""
-	return data[::-1]
+	result = ""
+	for item in range(len(phrase)):
+		result = result + phrase[len(phrase) - 1 - item]
+	return result
